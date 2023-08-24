@@ -1672,6 +1672,14 @@
 	background: #FFFFFF;
 }
 
+.cdvDetailTable  tr {
+	border: 1px solid #f0f0f0;
+}
+
+.cdvTimeSlotTable, th, td {
+	border: 1px solid #f0f0f0;
+} 
+
 .cdvDetailTableRow1
 {
 	height: 30px;
@@ -1777,7 +1785,7 @@
 
 .cdvTimeSlotTableRow
 {
-	height: 15px;
+	height: 41px;
 	min-width: 100px;
 }
 
@@ -1797,7 +1805,7 @@
 	height: 30px;
 
 	color: #666666;
-  	font-size: 80%;
+ 	font-size: 80%;
   	text-align: center;
 }
 
@@ -3729,3 +3737,10 @@
 
 
 /*--------------------------------* Marked Day End *------------------------------ */
+
+/* --------------------------------------------------------------------------------- */
+
+/*--------------------------------* General Start *---------------------------- */
+.mt-23 {
+	margin-top: 23px;
+}
