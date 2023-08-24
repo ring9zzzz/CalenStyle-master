@@ -3035,14 +3035,12 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 					iCalendarContInnerHeight -= $(to.elem).find(".cFilterBar").height();
 				}
 			}
-			$(to.elem).find(".calendarContInner").css({"width": iCalendarContWidth, "height": iCalendarContInnerHeight});
-
-			to.__adjustHeader();
 
 			if($.cf.compareStrings(to.setting.filterBarPosition, "Right"))
 				$(to.elem).find(".cFilterBar").css({"left": iCalendarContWidth});
 
-			$(to.elem).find(".calendarCont").css("overflow", "hidden");
+			$(to.elem).find(".calendarCont").css("overflow-y", "hidden");
+			$(to.elem).find(".calendarCont").css("overflow-x", "scroll");
 
 			var icdvDetailTableWidth = iCalendarContWidth,
 			icContHeaderHeight = ($(to.elem).find(".cContHeader").length > 0) ? $(to.elem).find(".cContHeader").outerHeight() : 0;
@@ -3054,10 +3052,26 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 
 			var icdvDetailTableHeight = iCalendarContHeight - icContHeaderHeight;
 			if(!to.tv.bDisABar || !(to.tv.bDisFBar && $.cf.compareStrings(to.setting.filterBarPosition, "Bottom")))
+			{
 				icdvDetailTableHeight += $.CalenStyle.extra.iBorderOverhead;
+			}				
 			else
+			{
 				icdvDetailTableHeight -= $.CalenStyle.extra.iBorderOverhead;
-			$(to.elem).find(".cdvDetailTableMain").css({"height": icdvDetailTableHeight, "width": icdvDetailTableWidth});
+			}
+			
+			var cdvDetailTableMainWidth = $(".cdvTimeSlotTable").width();
+			
+            if(cdvDetailTableMainWidth)
+            {
+				$(to.elem).find(".calendarContInner").css({"width": cdvDetailTableMainWidth, "height": iCalendarContInnerHeight});
+
+				to.__adjustHeader();
+
+	            $(to.elem).find(".cdvDetailTableMain").css({"height": icdvDetailTableHeight, "width": cdvDetailTableMainWidth});
+            }
+
+			$('.cContHeader').css({"width": iCalendarContWidth});
 
 			var iBorderOverheadAllDays = to.tv.iNoVDay * $.CalenStyle.extra.iBorderOverhead;
 
@@ -3074,7 +3088,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			icdvContRow3Width = iCalendarContWidth - $.CalenStyle.extra.iBorderOverhead;
 			var icdvTimeSlotTableHeight = $(to.elem).find(".cdvTimeSlotTable").prop("scrollHeight");
 			icdvContRow3Height = (icdvContRow3Height > icdvTimeSlotTableHeight) ? icdvTimeSlotTableHeight : icdvContRow3Height;
-			$(to.elem).find(".cdvContRow3Main").css({"left": icdvContRow3Left, "top": icdvContRow3Top, "height": icdvContRow3Height, "width": icdvContRow3Width});
+			$(to.elem).find(".cdvContRow3Main").css({"left": icdvContRow3Left, "top": icdvContRow3Top, "height": icdvContRow3Height});
 
 			if(iScrollbarWidth === 0)
 				icdvContRow3Width = icdvContRow3Width + 1;

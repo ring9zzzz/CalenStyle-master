@@ -1811,7 +1811,7 @@
 	position: absolute;
 	left: 0;
     top:50px;
-	overflow-x: hidden;
+	overflow-x: scroll;
 	overflow-y: auto;
 
 	-webkit-overflow-scrolling: touch;
