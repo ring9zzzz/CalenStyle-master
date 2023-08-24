@@ -53,6 +53,12 @@
 	overflow-y: scroll !important;
 }
 
+.cdvDetailTableMain > tbody
+{
+	position: relative;
+    top: 50px;
+}
+
 .cListOuterCont
 {
 	position: relative;
@@ -1693,6 +1699,15 @@
 {
 	float: left;
 	margin-left: 6px;
+	display: inline-grid;
+	min-width: 50px;
+	text-align: center;
+}
+
+.cdvMultiColumn .cdvCellDayLeft > span
+{
+	text-align: center;
+    padding-bottom: 10px
 }
 
 .cdvMultiColumn .cdvCellDayRight
@@ -1754,11 +1769,13 @@
 .cdvTimeSlotTable
 {
 	position: relative;
+	table-layout: fixed;
 }
 
 .cdvTimeSlotTableRow
 {
-	height: 30px;
+	height: 15px;
+	min-width: 100px;
 }
 
 .cdvContRow2
@@ -1793,7 +1810,7 @@
 
 	position: absolute;
 	left: 0;
-
+    top:50px;
 	overflow-x: hidden;
 	overflow-y: auto;
 

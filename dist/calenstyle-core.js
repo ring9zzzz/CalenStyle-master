@@ -142,7 +142,7 @@ $.CalenStyle = $.CalenStyle ||
 		formatSeparatorDateTime: " ",
 		formatSeparatorDate: "-",
 		formatSeparatorTime: ":",
-		is24Hour: false,
+		is24Hour: true,
 		inputDateTimeFormat: "dd-MM-yyyy HH:mm:ss",
 
 		eventDuration: 30, // In minutes
@@ -1612,7 +1612,7 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("cdlvCalendarCont");
 
 			to.tv.iNoVDay = to.setting.daysInDayListView;
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iSelDay = Math.floor(to.tv.iNoVDay / 2);
 			to.tv.iNoVDayDis = 1;
@@ -1622,7 +1622,7 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("cavCalendarCont");
 
 			to.tv.iNoVDay = to.setting.daysInAppointmentView;
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1643,11 +1643,11 @@ CalenStyle.prototype = {
 			if(!$.cf.compareStrings(to.setting.agendaViewDuration, "Month"))
 			{
 				if($.cf.compareStrings(to.setting.agendaViewDuration, "Week"))
-					to.tv.iNoVDay = 7;
+					to.tv.iNoVDay = 6;
 				else if($.cf.compareStrings(to.setting.agendaViewDuration, "CustomDays"))
 					to.tv.iNoVDay = to.setting.daysInAgendaView;
 
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = to.tv.iNoVDay;
 			}
@@ -1656,8 +1656,8 @@ CalenStyle.prototype = {
 		{
 			$oCalendarCont.addClass("cwpvCalendarCont");
 
-			to.tv.iNoVDay = 7;
-			//if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			to.tv.iNoVDay = 6;
+			//if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 			//	to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1666,11 +1666,11 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("cqavCalendarCont");
 
 			if($.cf.compareStrings(to.setting.quickAgendaViewDuration, "Week"))
-				to.tv.iNoVDay = 7;
+				to.tv.iNoVDay = 6;
 			else if($.cf.compareStrings(to.setting.quickAgendaViewDuration, "CustomDays"))
 				to.tv.iNoVDay = to.setting.daysInQuickAgendaView;
 
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1679,11 +1679,11 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("ctpvCalendarCont");
 
 			if($.cf.compareStrings(to.setting.taskPlannerViewDuration, "Week"))
-				to.tv.iNoVDay = 7;
+				to.tv.iNoVDay = 6;
 			else if($.cf.compareStrings(to.setting.taskPlannerViewDuration, "CustomDays"))
 				to.tv.iNoVDay = to.setting.daysInTaskPlannerView;
 
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1693,8 +1693,8 @@ CalenStyle.prototype = {
 
 			if($.cf.compareStrings(to.setting.visibleView, "WeekView"))
 			{
-				to.tv.iNoVDay = 7;
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				to.tv.iNoVDay = 6;
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = to.tv.iNoVDay;
 			}
@@ -1706,14 +1706,14 @@ CalenStyle.prototype = {
 			else if($.cf.compareStrings(to.setting.visibleView, "CustomView"))
 			{
 				to.tv.iNoVDay = to.setting.daysInCustomView;
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = to.tv.iNoVDay;
 			}
 			else if($.cf.compareStrings(to.setting.visibleView, "DayEventDetailView"))
 			{
 				to.tv.iNoVDay = to.setting.daysInDayListView;
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = 1;
 			}
@@ -2630,7 +2630,7 @@ CalenStyle.prototype = {
 
 					sTemplate += "<table class='cTable cdvDetailTable cdvDetailTableMain' cellspacing='0' style='top: " + iSectionTopPos + "px;'></table>";
 
-					sTemplate += "<div class='cdvContRow2 cdvContRow2Main'></div>";
+					/* sTemplate += "<div class='cdvContRow2 cdvContRow2Main'></div>"; */
 					sTemplate += "<div class='cdvContRow3 cdvContRow3Main'></div>";
 
 					iSectionTopPos -= 1;
@@ -2798,7 +2798,7 @@ CalenStyle.prototype = {
 		{
 			if(bLoadAll)
 			{
-				$(to.elem).find(".cdvContRow2Main").html("");
+				/* $(to.elem).find(".cdvContRow2Main").html(""); */
 				$(to.elem).find(".cdvContRow3Main").html("");
 
 				to.__updateDetailViewTable();
@@ -3532,7 +3532,7 @@ CalenStyle.prototype = {
 			}
 			else if($.cf.compareStrings(to.setting.visibleView, "DayEventListView") || $.cf.compareStrings(to.setting.visibleView, "DayEventDetailView"))
 			{
-				if(to.setting.daysInDayListView === 7)
+				if(to.setting.daysInDayListView >= 6)
 				{
 					dArrTempDates = to._getWeekForDate(dCurrentDateStart, false);
 					to.tv.dAVDt = to.__setCurrentViewDatesArray(to.tv.iNoVDay, dArrTempDates[0], null, "Next");

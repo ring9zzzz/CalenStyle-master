@@ -146,7 +146,7 @@ $.CalenStyle = $.CalenStyle ||
 		formatSeparatorDateTime: " ",
 		formatSeparatorDate: "-",
 		formatSeparatorTime: ":",
-		is24Hour: false,
+		is24Hour: true,
 		inputDateTimeFormat: "dd-MM-yyyy HH:mm:ss",
 
 		eventDuration: 30, // In minutes
@@ -1616,7 +1616,7 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("cdlvCalendarCont");
 
 			to.tv.iNoVDay = to.setting.daysInDayListView;
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iSelDay = Math.floor(to.tv.iNoVDay / 2);
 			to.tv.iNoVDayDis = 1;
@@ -1626,7 +1626,7 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("cavCalendarCont");
 
 			to.tv.iNoVDay = to.setting.daysInAppointmentView;
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1651,7 +1651,7 @@ CalenStyle.prototype = {
 				else if($.cf.compareStrings(to.setting.agendaViewDuration, "CustomDays"))
 					to.tv.iNoVDay = to.setting.daysInAgendaView;
 
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = to.tv.iNoVDay;
 			}
@@ -1661,7 +1661,7 @@ CalenStyle.prototype = {
 			$oCalendarCont.addClass("cwpvCalendarCont");
 
 			to.tv.iNoVDay = 6;
-			//if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			//if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 			//	to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1674,7 +1674,7 @@ CalenStyle.prototype = {
 			else if($.cf.compareStrings(to.setting.quickAgendaViewDuration, "CustomDays"))
 				to.tv.iNoVDay = to.setting.daysInQuickAgendaView;
 
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1687,7 +1687,7 @@ CalenStyle.prototype = {
 			else if($.cf.compareStrings(to.setting.taskPlannerViewDuration, "CustomDays"))
 				to.tv.iNoVDay = to.setting.daysInTaskPlannerView;
 
-			if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+			if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 				to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 			to.tv.iNoVDayDis = to.tv.iNoVDay;
 		}
@@ -1698,7 +1698,7 @@ CalenStyle.prototype = {
 			if($.cf.compareStrings(to.setting.visibleView, "WeekView"))
 			{
 				to.tv.iNoVDay = 6;
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = to.tv.iNoVDay;
 			}
@@ -1710,14 +1710,14 @@ CalenStyle.prototype = {
 			else if($.cf.compareStrings(to.setting.visibleView, "CustomView"))
 			{
 				to.tv.iNoVDay = to.setting.daysInCustomView;
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = to.tv.iNoVDay;
 			}
 			else if($.cf.compareStrings(to.setting.visibleView, "DayEventDetailView"))
 			{
 				to.tv.iNoVDay = to.setting.daysInDayListView;
-				if(to.tv.iNoVDay === 7 && to.setting.excludeNonBusinessHours)
+				if(to.tv.iNoVDay >= 6 && to.setting.excludeNonBusinessHours)
 					to.tv.iNoVDay -= (to.tv.iNoVDay - to.tv.iBsDays);
 				to.tv.iNoVDayDis = 1;
 			}
@@ -2634,7 +2634,7 @@ CalenStyle.prototype = {
 
 					sTemplate += "<table class='cTable cdvDetailTable cdvDetailTableMain' cellspacing='0' style='top: " + iSectionTopPos + "px;'></table>";
 
-					sTemplate += "<div class='cdvContRow2 cdvContRow2Main'></div>";
+					/* sTemplate += "<div class='cdvContRow2 cdvContRow2Main'></div>"; */
 					sTemplate += "<div class='cdvContRow3 cdvContRow3Main'></div>";
 
 					iSectionTopPos -= 1;
@@ -2802,7 +2802,7 @@ CalenStyle.prototype = {
 		{
 			if(bLoadAll)
 			{
-				$(to.elem).find(".cdvContRow2Main").html("");
+				/* $(to.elem).find(".cdvContRow2Main").html(""); */
 				$(to.elem).find(".cdvContRow3Main").html("");
 
 				to.__updateDetailViewTable();
@@ -3536,7 +3536,7 @@ CalenStyle.prototype = {
 			}
 			else if($.cf.compareStrings(to.setting.visibleView, "DayEventListView") || $.cf.compareStrings(to.setting.visibleView, "DayEventDetailView"))
 			{
-				if(to.setting.daysInDayListView === 7)
+				if(to.setting.daysInDayListView >= 6)
 				{
 					dArrTempDates = to._getWeekForDate(dCurrentDateStart, false);
 					to.tv.dAVDt = to.__setCurrentViewDatesArray(to.tv.iNoVDay, dArrTempDates[0], null, "Next");
@@ -9704,52 +9704,8 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			to.tv.dLoadDt = to.tv.dAVDt[(to.tv.dAVDt.length - 1)];
 
 		var sTemplate = "";
-		sTemplate += "<thead>";
-		//---------------------------------------------------------------------------------------------
-		/*
-		sTemplate += "<tr class='cdvDetailTableRow2'>";
-		sTemplate += "<td class='cdvDetailTableColumnTime'> &nbsp; </td>";
-		for(iDateIndex = 0; iDateIndex < to.tv.iNoVDayDis; iDateIndex++)
-		{
-			var sDVDaysId = "cdvAllDayColumn"+iDateIndex;
-			sDVDaysClass = "";
-			if(iDateIndex === (to.tv.iNoVDayDis - 1))
-				sDVDaysClass += " cdvLastColumn";
-			sTemplate += "<td id='"+sDVDaysId+"' class='cdvAllDayColumns "+sDVDaysClass+"' title='"+to.tv.dAVDt[iDateIndex]+"'> &nbsp; </td>";
-		}
-		if(iScrollbarWidth > 0)
-			sTemplate += "<td class='cdvDetailTableScroll'>&nbsp;</td>";
-		sTemplate += "</tr>"; */
-
-		//---------------------------------------------------------------------------------------------
-
-		sTemplate += "<tr class='cdvDetailTableRow3'>";
-		sTemplate += "<td class='cdvDetailTableColumnTime'> &nbsp; </td>";
-		// for(iDateIndex = 0; iDateIndex < to.tv.iNoVDayDis; iDateIndex++)
-		// {
-		// 	sDVDaysClass = "cdvDetailTableColumn"+iDateIndex;
-		// 	if(iDateIndex === (to.tv.iNoVDayDis - 1))
-		// 		sDVDaysClass += " cdvLastColumn";
-		// 	sTemplate += "<td class='cdvTableColumns "+sDVDaysClass+"'> &nbsp; </td>";
-		// }
-		if(iScrollbarWidth > 0)
-			sTemplate += "<td class='cdvDetailTableScroll'>&nbsp;</td>";
-		sTemplate += "</tr>";
-
-		sTemplate += "</thead>";
-
-		//---------------------------------------------------------------------------------------------
-
+		
 		sTemplate += "<tbody>";
-		if(!$.cf.compareStrings(to.setting.visibleView, "DayEventDetailView"))
-		sTemplate += "<tr class='cdvDetailTableRow1 cExceptDayEventDetailView'>";
-		else
-			sTemplate += "<tr class='cdvDetailTableRow1 cDayEventDetailView'>";
-
-		sTemplate += "<td  class='cdvDetailTableColumnTime'>";
-		sTemplate += "<div class='cdvCellWeekNumberLabel'></div>";
-		sTemplate += "<div class='cdvCellWeekNumber'></div>";
-		sTemplate += "</td>";
 
 		for(iDateIndex = 0; iDateIndex < to.tv.iNoVDayDis; iDateIndex++)
 		{
@@ -9765,9 +9721,6 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			sTemplate += "</tr>";
 		}
 
-		if(iScrollbarWidth > 0)
-			sTemplate += "<td class='cdvDetailTableScroll'>&nbsp;</td>";
-
 		sTemplate += "</tr>";
 			
 		sTemplate += "</tbody>";
@@ -9776,9 +9729,9 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 		$(to.elem).find(".cdvDetailTableMain").html(sTemplate);
 		//----------------------------------------------------------------------------------------------
 
-		sTemplate = "";
+		/* sTemplate = "";
 		sTemplate += "<span class='cdvCellHeaderAllDay'><span>"+to.setting.miscStrings.allDay+"</span></span>";
-		$(to.elem).find(".cdvContRow2Main").html(sTemplate);
+		$(to.elem).find(".cdvContRow2Main").html(sTemplate); */
 
 		//------------------------------------------------------------------------------
 
@@ -9794,7 +9747,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 		//------------------------------------------------------------------------------
 
 		sTemplate = "";
-		sTemplate += "<div class='cdvContRow3Events'></div>";
+	/* 	sTemplate += "<div class='cdvContRow3Events'></div>"; */
 		$(to.elem).find(".cdvContRow3Main").append(sTemplate);
 
 		//------------------------------------------------------------------------------
@@ -10671,7 +10624,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			iCalendarMarginLeft = parseInt(iCalendarMarginLeft.replace("px", ""));
 
 			iColumn1Width = $(to.elem).find(".cdvDetailTableColumnTime").width();
-			iX1 = $(to.elem).find(".cdvContRow3Events").position().left + iCalendarMarginLeft + iColumn1Width;
+			iX1 = 0 + iCalendarMarginLeft + iColumn1Width;
 			iX2 = iX1 + ($(to.elem).find(".cdvContRow3Events").width() - iColumn1Width);
 			iY2 = 1440;
 			iY1 = -1440;
@@ -11203,17 +11156,17 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			iCalendarLeft = $(to.elem).position().left;
 			iCalendarMarginLeft = $(to.elem).css("margin-left");
 			iCalendarMarginLeft = parseInt(iCalendarMarginLeft.replace("px", ""));
-			iLeft = iCalendarLeft + iCalendarMarginLeft + $(to.elem).find(".cdvContRow2Main").position().left;
+			iLeft = iCalendarLeft + iCalendarMarginLeft;
 			iX1 = iLeft + iColumn1Width;
-			iX2 = iX1 + $(to.elem).find(".cdvContRow2Main").width() - (iEventWidth + iScrollbarWidth + iColumn1Width);
+			iX2 = iX1 ;
 
 			iCalendarTop = $(to.elem).position().top;
 			iCalendarMarginTop = $(to.elem).css("margin-top");
 			iCalendarMarginTop = parseInt(iCalendarMarginTop.replace("px", ""));
-			iY1 = iCalendarTop + iCalendarMarginTop + $(to.elem).find(".cdvContRow2Main").position().top;
+			iY1 = iCalendarTop + iCalendarMarginTop;
 			if(to.tv.bDisFBar && $.cf.compareStrings(to.setting.filterBarPosition, "Top"))
 				iY1 += to.setting.filterBarHeight;
-			iY2 = iY1 + $(to.elem).find(".cdvContRow2Main").height() - (iEventHeight);
+			iY2 = iY1 + (iEventHeight);
 
 			bCanDrag = false;
 			$(to.elem).find("."+sDraggableClass).draggable(
@@ -11338,18 +11291,11 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 		}
 
 		var iRow2Height = iMaxTopPos + iEventHeight + 2 * iPosTopDiff;
-		$(to.elem).find(".cdvContRow2Main").css({"height": iRow2Height});
-		iRow2Height = $(to.elem).find(".cdvContRow2Main").height();
+	/* 	$(to.elem).find(".cdvContRow2Main").css({"height": iRow2Height}); */
+		iRow2Height = 0
 		$(to.elem).find(".cdvDetailTableRow2").css({"height": iRow2Height});
 
 		$(to.elem).find(".cdvCellHeaderAllDay").css({"height": iRow2Height});
-
-		var iRow2Top = $(to.elem).find(".cdvContRow2Main").position().top,
-		iWeekTableHeight = $(to.elem).find(".cdvDetailTableMain").height(),
-		iWeekTableRow1Height = $(to.elem).find(".cdvDetailTableRow1").height(),
-		iRow3Top = iRow2Top + iRow2Height + $.CalenStyle.extra.iEventHeightOverhead,
-		iRow3Height = iWeekTableHeight - (iWeekTableRow1Height + iRow2Height + $.CalenStyle.extra.iEventHeightOverhead);
-		$(to.elem).find(".cdvContRow3Main").css({"height": iRow3Height, "top": iRow3Top});
 
 		to._makeEventEditableInDetailView(".cdvEventAllDay");
 	},
@@ -11446,6 +11392,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 		to.tv.fAHrTpPos = [];
 
 		sTemplate += "<table class='cdvTimeSlotTable'>";
+		sTemplate += "<thead>"
 		for(var iSlotIndex = 0; iSlotIndex < (24 * to.tv.iUTmSlt); iSlotIndex++)
 		{
 			var iSlotHours = Math.floor(iSlotIndex / to.tv.iUTmSlt),
@@ -11470,14 +11417,14 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 				sHourStr = to.getDateInFormat({"iDate": {H: iSlotHours, m: iSlotMinutes}}, "hh:mm", to.setting.is24Hour, true);
 
 				sTimeSlotClass = "cdvTimeSlotTableRow cdvTimeSlotTableRow"+sSlotTime;
-				sTemplate += "<tr class='" + sTimeSlotClass + "' title='" + sHourStr + "'>";
+				sTemplate += "<th class='" + sTimeSlotClass + "' title='" + sHourStr + "'>";
 
-				if(!to.setting.timeLabels[iSlotInnerIndex])
-					sHourStr = "&nbsp;";
+/* 				if(!to.setting.timeLabels[iSlotInnerIndex])
+					sHourStr = "&nbsp;"; */
 
-				sTemplate += "<td class='cdvDetailTableColumnTime'><span>" + sHourStr + "</span></td>";
+				sTemplate += "<p class='cdvDetailTableColumnTime'><span>" + sHourStr + "</span></p>";
 
-				for(var iDateIndex = 0; iDateIndex < to.tv.iNoVDayDis; iDateIndex++)
+		/* 		for(var iDateIndex = 0; iDateIndex < to.tv.iNoVDayDis; iDateIndex++)
 				{
 					var bArrTemp = to.tv.bADVCur[iDateIndex],
 					bTemp = bArrTemp[iSlotIndex],
@@ -11508,15 +11455,18 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 					else if(bTemp === 1)
 						sCellClass += " cBusinessHoursBg";
 
-					sTemplate += "<td class='" + sCellClass + "' title='"+ dThisTempDate +"' " + sStyle + "'> &nbsp; </td>";
-				}
-				sTemplate += "</tr>";
+					sTemplate += "<p class='" + sCellClass + "' title='"+ dThisTempDate +"' " + sStyle + "'> &nbsp; </p>";
+				} */
+				sTemplate += "</th>";
 
 				to.tv.fAHrTpPos.push(iTopPos);
 				iTopPos += 32;
 			}
 		}
+
+		sTemplate += "</thead>"
 		sTemplate += "</table>";
+		
 		$(to.elem).find(".cdvContRow3Main").html(sTemplate);
 
 		$(to.elem).find(".cdvContRow3Main").scroll(function()
@@ -12001,19 +11951,10 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 
 			to.__adjustHeader();
 
-			if(iScrollbarWidth > 0)
-				$(to.elem).find(".cdvDetailTableScroll").css({"width": iScrollbarWidth});
-
 			if($.cf.compareStrings(to.setting.filterBarPosition, "Right"))
 				$(to.elem).find(".cFilterBar").css({"left": iCalendarContWidth});
 
 			$(to.elem).find(".calendarCont").css("overflow", "hidden");
-
-			var icdvContRow2Left = 0,
-			icdvContRow2Width = iCalendarContWidth,
-			icContHeaderWidth = iCalendarContWidth;
-			if($(to.elem).find(".cContHeader").length > 0)
-				$(to.elem).find(".cContHeader").css({"width": icContHeaderWidth});
 
 			var icdvDetailTableWidth = iCalendarContWidth,
 			icContHeaderHeight = ($(to.elem).find(".cContHeader").length > 0) ? $(to.elem).find(".cContHeader").outerHeight() : 0;
@@ -12030,19 +11971,16 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 				icdvDetailTableHeight -= $.CalenStyle.extra.iBorderOverhead;
 			$(to.elem).find(".cdvDetailTableMain").css({"height": icdvDetailTableHeight, "width": icdvDetailTableWidth});
 
-			var icdvContRow2Top = $(to.elem).find(".cdvDetailTableMain").position().top + $(to.elem).find(".cdvDetailTableRow1").outerHeight();
-			$(to.elem).find(".cdvContRow2Main").css({"left": icdvContRow2Left, "top": icdvContRow2Top, "width": icdvContRow2Width});
-
 			var iBorderOverheadAllDays = to.tv.iNoVDay * $.CalenStyle.extra.iBorderOverhead;
 
 			var icdvDetailTableColumnTimeWidth = $(to.elem).find(".cdvDetailTableColumnTime").width();
 			icdvDetailTableColumnTimeWidth = (icdvDetailTableColumnTimeWidth !== 60) ? 60 : icdvDetailTableColumnTimeWidth;
-			var icdvTableColumnsWidth = (icdvContRow2Width - icdvDetailTableColumnTimeWidth - iScrollbarWidth - iBorderOverheadAllDays) / (to.tv.iNoVDayDis);
+			var icdvTableColumnsWidth = (icdvDetailTableColumnTimeWidth - iScrollbarWidth - iBorderOverheadAllDays) / (to.tv.iNoVDayDis);
 			$(to.elem).find(".cdvTableColumns").css({"width": icdvTableColumnsWidth});
 			$(to.elem).find(".cdvAllDayColumns").css({"width": icdvTableColumnsWidth});
 
-			var icdvContRow3Left = 0,
-			iPreviousRowsHeight = icdvContRow2Top + $(to.elem).find(".cdvContRow2Main").outerHeight(),
+			var icdvContRow3Left = 55,
+			iPreviousRowsHeight = 50,
 			icdvContRow3Top = iPreviousRowsHeight,
 			icdvContRow3Height = iCalendarContHeight - iPreviousRowsHeight,
 			icdvContRow3Width = iCalendarContWidth - $.CalenStyle.extra.iBorderOverhead;
@@ -12054,7 +11992,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 				icdvContRow3Width = icdvContRow3Width + 1;
 			else
             	icdvContRow3Width = (iScrollbarWidth > iBorderOverheadAllDays) ? (icdvContRow3Width - iScrollbarWidth) : (icdvContRow3Width - iBorderOverheadAllDays +iScrollbarWidth);
-        	$(to.elem).find(".cdvTimeSlotTable").css({"width": icdvContRow3Width});
+        	/* $(to.elem).find(".cdvTimeSlotTable").css({"width": icdvContRow3Width}); */
 			$(to.elem).find(".cdvContRow3Events").css({"height": icdvTimeSlotTableHeight, "width": icdvContRow3Width});
 
 			icdvDetailTableColumnTimeWidth = $(to.elem).find(".cdvDetailTableColumnTime").width();
@@ -12189,9 +12127,9 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			}
 
 			if(bFullDateMatched === 0)
-				$(to.elem).find(sTempId).html("<span class='cdvCellDayLeft'>"+to.setting.miscStrings.today+"</span><span class='cdvCellDayRight'>" + to.getNumberStringInFormat(iDay, 0, true) + "</span>");
+				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft'><span>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.setting.miscStrings.today}</span>`);
 			else
-				$(to.elem).find(sTempId).html("<span class='cdvCellDayLeft'>" + to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true) + "</span><span class='cdvCellDayRight'>" + to.getNumberStringInFormat(iDay, 0, true) + "</span>");
+				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft'><span class=>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
 
 			/* -------------------------- Table Row 1 End ------------------------------- */
 
@@ -12255,15 +12193,15 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 
 			//-----------------------------------------------------------------------------------
 
-			var $occCDVContRow2Main = $(to.elem).find(".cdvContRow2Main"),
+	/* 		var $occCDVContRow2Main = $(to.elem).find(".cdvContRow2Main"),
 			icdvContRow2Left = $occCDVContRow2Main.position().left,
 			icdvContRow2Width= $occCDVContRow2Main.width();
 
 			var newElemCont2 = $occCDVContRow2Main.clone();
 			$(newElemCont2).removeClass(".cdvContRow2Main").addClass("cdvContRow2Temp");
-			$occCDVContRow2Main.parent().append(newElemCont2);
+			$occCDVContRow2Main.parent().append(newElemCont2); */
 
-			icdvContRow2Left = icdvContRow2Left + icdvContRow2Width;
+			icdvContRow2Left = icdvContRow2Left;
 
 			//-----------------------------------------------------------------------------------
 			var $occCDVContRow3Main = $(to.elem).find(".cdvContRow3Main"),
@@ -12360,15 +12298,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 
 			//-----------------------------------------------------------------------------------
 
-			var $occCDVContRow2Main = $(to.elem).find(".cdvContRow2Main"),
-			icdvContRow2Left = $occCDVContRow2Main.position().left,
-			icdvContRow2Width= $occCDVContRow2Main.width();
-
-			var newElemCont2 = $occCDVContRow2Main.clone();
-			$(newElemCont2).removeClass(".cdvContRow2Main").addClass("cdvContRow2Temp");
-			$occCDVContRow2Main.parent().append(newElemCont2);
-
-			icdvContRow2Left = icdvContRow2Left - icdvContRow2Width;
+			icdvContRow2Left = icdvContRow2Left;
 
 			//-----------------------------------------------------------------------------------
 			var $occCDVContRow3Main = $(to.elem).find(".cdvContRow3Main"),
