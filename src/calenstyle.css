@@ -1702,12 +1702,15 @@
 	display: inline-grid;
 	min-width: 50px;
 	text-align: center;
+	font-weight: 600;
+	color: #6E7275;
 }
 
 .cdvMultiColumn .cdvCellDayLeft > span
 {
 	text-align: center;
-    padding-bottom: 10px
+    padding-bottom: 10px;
+	color: #212529;
 }
 
 .cdvMultiColumn .cdvCellDayRight
@@ -3514,6 +3517,22 @@
 .cTodayHighlightTextColor
 {
 	color: #FF3B30 !important;
+}
+
+.cTodayHighlightTextColor .cdvCellDayLeft
+{
+	color: #EE7203;
+}
+
+.cTodayHighlightTextColor .cdvCellDayLeft .cTodayHighlightCircle
+{
+	background-color: #EE7203;
+	color: #FFFFFF;
+	width: 33px;
+	height: 33px;
+	margin-left: 7px;
+	padding-top: 7px;
+	border-radius: 100%;
 }
 
 .cCurrentHighlightCircle
