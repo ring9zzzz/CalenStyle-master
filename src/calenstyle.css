@@ -515,12 +515,12 @@
 .cContHeaderLabelUnderline
 {
 	display: inline;
-	border-bottom: 1px dotted #757575;
 }
 
 .cContHeaderLabelOuter
 {
 	color: #111111;
+	margin-left: 52px;
 }
 
 .cContHeaderLabelOuter.clickableLink:hover,

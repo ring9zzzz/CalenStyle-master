@@ -149,8 +149,9 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 
 				// Set Style For Non Busienss Hours
 
-				if(!to.tv.bABsDays[dCurrentDate.getDay()])
-					sCellClassTemp += " cNonBusinessHoursBg";
+				// remove the background for calendar picker
+				// if(!to.tv.bABsDays[dCurrentDate.getDay()])
+				// 	sCellClassTemp += " cNonBusinessHoursBg";
 
 				// Set Style For All-Day Restricted Section
 
@@ -2780,7 +2781,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 		var bDatePickerView = $.cf.compareStrings(to.setting.visibleView, "DatePicker"),
 		sUnderlineClass = bDatePickerView ? "cContHeaderLabelUnderline" : "",
 		sClickableClass = bDatePickerView ? "clickableLink" : "";
-		var sHeaderViewLabel = "<span class='cContHeaderLabelMonth "+sClickableClass+"'><span class='"+sUnderlineClass+"'><b>" + to.getDateInFormat({"iDate": {M: to.setting.selectedDate.getMonth()}}, "MMMM", false, true) + "</b></span></span>";
+		var sHeaderViewLabel = "<span class='cContHeaderLabelMonth "+sClickableClass+"'><span class='"+sUnderlineClass+"'><b>" + to.getDateInFormat({"iDate": {M: to.setting.selectedDate.getMonth()}}, "MMMM", false, false) + "</b></span></span>";
 		sHeaderViewLabel += "<span class='cContHeaderLabelYear "+sClickableClass+"'><span class='"+sUnderlineClass+"'>" + to.getNumberStringInFormat(to.setting.selectedDate.getFullYear(), 0, true) + "</span></span>";
 
 		if(to.setting.modifyHeaderViewLabels)

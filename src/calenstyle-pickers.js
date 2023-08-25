@@ -51,7 +51,7 @@ function CalenStyle_MonthPicker(cso, bIsPopup)
 				if(cso.setting.selectedDate.getMonth() === iCountMonth)
 					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthCurrent'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMMM", false, true) + "</td>";
 				else
-					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthOther clickableLink'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMM", false, true) + "</td>";
+					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthOther clickableLink'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMMM", false, true) + "</td>";
 				iCountMonth++;
 			}
 			sTempStr += "</tr>";
