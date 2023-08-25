@@ -46,6 +46,7 @@
 	user-select: none;
 
 	border: 1px solid #DDDDDD;
+	border-radius: 4px;
 }
 
 .br-ios .cListOuterCont
@@ -1672,6 +1673,14 @@
 	background: #FFFFFF;
 }
 
+.cdvDetailTable  tr {
+	border: 1px solid #f0f0f0;
+}
+
+.cdvTimeSlotTable, th, td {
+	border: 1px solid #f0f0f0;
+} 
+
 .cdvDetailTableRow1
 {
 	height: 30px;
@@ -1702,12 +1711,15 @@
 	display: inline-grid;
 	min-width: 50px;
 	text-align: center;
+	font-weight: 600;
+	color: #6E7275;
 }
 
 .cdvMultiColumn .cdvCellDayLeft > span
 {
 	text-align: center;
-    padding-bottom: 10px
+    padding-bottom: 10px;
+	color: #212529;
 }
 
 .cdvMultiColumn .cdvCellDayRight
@@ -1774,7 +1786,7 @@
 
 .cdvTimeSlotTableRow
 {
-	height: 15px;
+	height: 41px;
 	min-width: 100px;
 }
 
@@ -1794,7 +1806,7 @@
 	height: 30px;
 
 	color: #666666;
-  	font-size: 80%;
+ 	font-size: 80%;
   	text-align: center;
 }
 
@@ -2376,6 +2388,10 @@
     transform: translateZ(0);
 }
 
+.cmvMonthTable th, .cmvMonthTable td {
+	border: none;
+}
+
 .cmvDayHeader
 {
 	text-align: center;
@@ -2476,8 +2492,7 @@
 
 .cmvOtherMonthDay
 {
-	color: #AAAAAA;
-	background: #EFEFEF;
+	color: #9598A3;
 }
 
 .cmvThinBorderTop
@@ -3324,8 +3339,6 @@
 	height: 0;
 
 	position: absolute;
-	border-width: 11px;
-	border-style: solid;
 
 	z-index: 6;
 }
@@ -3516,6 +3529,22 @@
 	color: #FF3B30 !important;
 }
 
+.cTodayHighlightTextColor .cdvCellDayLeft
+{
+	color: #EE7203;
+}
+
+.cTodayHighlightTextColor .cdvCellDayLeft .cTodayHighlightCircle
+{
+	background-color: #EE7203;
+	color: #FFFFFF;
+	width: 33px;
+	height: 33px;
+	margin-left: 7px;
+	padding-top: 7px;
+	border-radius: 100%;
+}
+
 .cCurrentHighlightCircle
 {
 	background: #444444;
@@ -3524,7 +3553,7 @@
 
 .cTodayHighlightCircle
 {
-	background: #FF3B30;
+	background: #EE7203;
 	color: #FFFFFF;
 }
 
@@ -3560,7 +3589,7 @@
 
 .cDatePickerHighlightBg
 {
-	color: #96281B !important;
+	background-color: #FAD1B8;
 }
 
 .cTimeIndicator
@@ -3710,3 +3739,10 @@
 
 
 /*--------------------------------* Marked Day End *------------------------------ */
+
+/* --------------------------------------------------------------------------------- */
+
+/*--------------------------------* General Start *---------------------------- */
+.mt-23 {
+	margin-top: 23px;
+}
