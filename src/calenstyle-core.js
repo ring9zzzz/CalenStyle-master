@@ -1776,8 +1776,9 @@ CalenStyle.prototype = {
 			sTemp += to.setting.headerComponents.PreviousButton;
 		else if($.cf.compareStrings(sSectionName, "NextButton"))
 			sTemp += to.setting.headerComponents.NextButton;
-		else if($.cf.compareStrings(sSectionName, "TodayButton"))
-			sTemp += to.setting.headerComponents.TodayButton;
+		// remove today in date picker
+		// else if($.cf.compareStrings(sSectionName, "TodayButton"))
+		// 	sTemp += to.setting.headerComponents.TodayButton;
 		else if($.cf.compareStrings(sSectionName, "HeaderLabel"))
 			sTemp += to.setting.headerComponents.HeaderLabel;
 		else if($.cf.compareStrings(sSectionName, "HeaderLabelWithDropdownMenuArrow"))
