@@ -12127,9 +12127,9 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			}
 
 			if(bFullDateMatched === 0)
-				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft'><span>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.setting.miscStrings.today}</span>`);
+				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft mt-23'><span class="cTodayHighlightCircle">${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
 			else
-				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft'><span class=>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
+				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft  mt-23'><span class=>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
 
 			/* -------------------------- Table Row 1 End ------------------------------- */
 
