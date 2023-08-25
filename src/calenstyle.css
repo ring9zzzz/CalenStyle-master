@@ -46,6 +46,7 @@
 	user-select: none;
 
 	border: 1px solid #DDDDDD;
+	border-radius: 4px;
 }
 
 .br-ios .cListOuterCont
@@ -2387,6 +2388,10 @@
     transform: translateZ(0);
 }
 
+.cmvMonthTable th, .cmvMonthTable td {
+	border: none;
+}
+
 .cmvDayHeader
 {
 	text-align: center;
@@ -2487,8 +2492,7 @@
 
 .cmvOtherMonthDay
 {
-	color: #AAAAAA;
-	background: #EFEFEF;
+	color: #9598A3;
 }
 
 .cmvThinBorderTop
@@ -3335,8 +3339,6 @@
 	height: 0;
 
 	position: absolute;
-	border-width: 11px;
-	border-style: solid;
 
 	z-index: 6;
 }
@@ -3551,7 +3553,7 @@
 
 .cTodayHighlightCircle
 {
-	background: #FF3B30;
+	background: #EE7203;
 	color: #FFFFFF;
 }
 
@@ -3587,7 +3589,7 @@
 
 .cDatePickerHighlightBg
 {
-	color: #96281B !important;
+	background-color: #FAD1B8;
 }
 
 .cTimeIndicator
