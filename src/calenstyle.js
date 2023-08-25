@@ -9,7 +9,7 @@
 
  ----------------------------------------------------------------------------- */
 
-(function () {
+ (function () {
 
     "use strict";
 
@@ -1780,8 +1780,8 @@ CalenStyle.prototype = {
 			sTemp += to.setting.headerComponents.PreviousButton;
 		else if($.cf.compareStrings(sSectionName, "NextButton"))
 			sTemp += to.setting.headerComponents.NextButton;
-		// else if($.cf.compareStrings(sSectionName, "TodayButton"))
-		// 	sTemp += to.setting.headerComponents.TodayButton;
+		else if($.cf.compareStrings(sSectionName, "TodayButton"))
+			sTemp += to.setting.headerComponents.TodayButton;
 		else if($.cf.compareStrings(sSectionName, "HeaderLabel"))
 			sTemp += to.setting.headerComponents.HeaderLabel;
 		else if($.cf.compareStrings(sSectionName, "HeaderLabelWithDropdownMenuArrow"))
@@ -5981,7 +5981,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 				sClass = "cmvFirstColumn";
 
 			if((to.setting.excludeNonBusinessHours && to.tv.bABsDays[iCountDays]) || !to.setting.excludeNonBusinessHours)
-				sTemplate += "<td id='" + "cmvDayName"+(iCountDays + 1) + "' class='cmvDayHeader cmvTableColumns "+sClass+"'>" + to.getDateInFormat({"iDate": {D: iCountDays}}, "DDD", false, true).substring(0, 1) + "</td>";
+				sTemplate += "<td id='" + "cmvDayName"+(iCountDays + 1) + "' class='cmvDayHeader cmvTableColumns "+sClass+"'>" + to.getDateInFormat({"iDate": {D: iCountDays}}, "DDD", false, true) + "</td>";
 
 			iCountDays++;
 			if(iCountDays > 6)
@@ -6071,7 +6071,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 				// Set Style For Non Busienss Hours
 
 				if(!to.tv.bABsDays[dCurrentDate.getDay()])
-					//sCellClassTemp += " cNonBusinessHoursBg";
+					sCellClassTemp += " cNonBusinessHoursBg";
 
 				// Set Style For All-Day Restricted Section
 
@@ -8701,7 +8701,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 		var bDatePickerView = $.cf.compareStrings(to.setting.visibleView, "DatePicker"),
 		sUnderlineClass = bDatePickerView ? "cContHeaderLabelUnderline" : "",
 		sClickableClass = bDatePickerView ? "clickableLink" : "";
-		var sHeaderViewLabel = "<span class='cContHeaderLabelMonth "+sClickableClass+"'><span class='"+sUnderlineClass+"'><b>" + to.getDateInFormat({"iDate": {M: to.setting.selectedDate.getMonth()}}, "MMMM", false, false) + "</b></span></span>";
+		var sHeaderViewLabel = "<span class='cContHeaderLabelMonth "+sClickableClass+"'><span class='"+sUnderlineClass+"'><b>" + to.getDateInFormat({"iDate": {M: to.setting.selectedDate.getMonth()}}, "MMMM", false, true) + "</b></span></span>";
 		sHeaderViewLabel += "<span class='cContHeaderLabelYear "+sClickableClass+"'><span class='"+sUnderlineClass+"'>" + to.getNumberStringInFormat(to.setting.selectedDate.getFullYear(), 0, true) + "</span></span>";
 
 		if(to.setting.modifyHeaderViewLabels)
@@ -12127,9 +12127,9 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 			}
 
 			if(bFullDateMatched === 0)
-				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft mt-23'><span class="cTodayHighlightCircle">${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
+				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft'><span>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.setting.miscStrings.today}</span>`);
 			else
-				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft  mt-23'><span class=>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
+				$(to.elem).find(sTempId).html(`<span class='cdvCellDayLeft'><span class=>${to.getNumberStringInFormat(iDay, 0, true)}</span> ${to.getDateInFormat({"iDate": {D: iDayOfWeek}}, "DDD", false, true)}</span>`);
 
 			/* -------------------------- Table Row 1 End ------------------------------- */
 
@@ -17411,12 +17411,11 @@ function CalenStyle_MonthPicker(cso, bIsPopup)
 			sTempStr += "<tr>";
 			for(var iMonthInnerIndex = 0; iMonthInnerIndex < 4; iMonthInnerIndex++)
 			{
-				console.log('this', iCountMonth);
 				var sMonthId = "cmlvMonth"+iCountMonth;
 				if(cso.setting.selectedDate.getMonth() === iCountMonth)
-					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthCurrent'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMMM", false, false) + "</td>";
+					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthCurrent'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMM", false, true) + "</td>";
 				else
-					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthOther clickableLink'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMMM", false, false) + "</td>";
+					sTempStr += "<td id='" + sMonthId + "' class='cmlvMonth cmlvMonthOther clickableLink'>" + cso.getDateInFormat({"iDate": {M: iCountMonth}}, "MMM", false, true) + "</td>";
 				iCountMonth++;
 			}
 			sTempStr += "</tr>";
