@@ -5981,7 +5981,7 @@ CalenStyle.prototype = $.extend(CalenStyle.prototype, {
 				sClass = "cmvFirstColumn";
 
 			if((to.setting.excludeNonBusinessHours && to.tv.bABsDays[iCountDays]) || !to.setting.excludeNonBusinessHours)
-				sTemplate += "<td id='" + "cmvDayName"+(iCountDays + 1) + "' class='cmvDayHeader cmvTableColumns "+sClass+"'>" + to.getDateInFormat({"iDate": {D: iCountDays}}, "DD", false, true).substring(0, 1) + "</td>";
+				sTemplate += "<td id='" + "cmvDayName"+(iCountDays + 1) + "' class='cmvDayHeader cmvTableColumns "+sClass+"'>" + to.getDateInFormat({"iDate": {D: iCountDays}}, "DDD", false, true).substring(0, 1) + "</td>";
 
 			iCountDays++;
 			if(iCountDays > 6)
